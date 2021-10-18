@@ -62,11 +62,45 @@
                 <li>Margen (margin box): espacio en blanco entre la caja y los otros elementos, se usa para separarlos. Se modifica con margin.</li>
             </ul>
             <h3>Modelo de caja estándar</h3>
-            <p>La altura y la anchura absorben o se suman el valor de las propiedades padding y border. Asi que si quieres que la caja tenga determinada altura y anchura hay que restarle los valores de padding y border que habías declarado. Este problema lo soluciona el modelo de cajas alternativo.</p>
+            <p>La altura y la anchura absorben o se suman el valor de las propiedades padding y border aumentado el tamaño de la caja. Asi que si quieres que la caja tenga determinada altura y anchura hay que restarle los valores de padding y border que habías declarado. Este problema lo soluciona el modelo de cajas alternativo.</p>
             <h3>Modelo de caja alternativo</h3>
-            <p>Con su propiedad box-sizing: border-box; hace el calculo automático cuando nosotros definimos width, height, padding y border.</p>
+            <p>Con su propiedad box-sizing: border-box; cuando a una determinada anchura y altura de una caja le agregamos algo de padding y border, el valor de estos resta al ancho y a la altura haciendo un calculo automático para mantener el tamaño total de la caja intacto.</p>
+            <p><strong>En detalle:</strong>"Por dentro" (box-model en inspect element) va a mostrar menos px de ancho y alto. "Por fuera" (en la hoja de estilo de CSS y en la visualización del navegador) se va a mostrar la caja con menos tamaño de contenido pero a la altura y anchura de la caja se le suman los valore de padding y border.</p>
+            <p>Es una practica estándar entre desarrolladores: es más fácil que tener que hacer cálculos nosotros al acomodar los elementos en la web. Se usa un Selector universal con la propiedad box-sizing: border-box; al inicio de cada hoja de CSS.</p>
             <h3>Herramientas de desarrollador</h3>
-            <p>Estan en todos los navegadores, generalmente se accede con f12. Se usa para inspeccionar las cajas que creamos, si realmente nuestras cajas tienen el tamaño que nosotros creemos que tienen.</p>
+            <p>Están en todos los navegadores, generalmente se accede con f12. Se usa para inspeccionar las cajas que creamos, si realmente nuestras cajas tienen el tamaño que nosotros creemos que tienen.</p>
+            <h2></h2>
+            <p>Margin, border y padding son propiedades abreviadas que nos permiten establecer todos sus valores a la vez, solo funcionará si están todos definidos. Aunque también tienen propiedades individuales que permiten controlar cada función de ellas.</p>
+            <h3>Margin</h3>
+            <p>Es el espacio invisible alrededor del borde de la caja que aleja al resto de los elementos. Puede tener valores negativos y positivos. Con el modelo de cajas estándar y alternativo, el margen se añade después de haber puesto las medidas de la caja. Establecer un valor negativo puede hacer que tu caja se superponga con otros elementos o elimine margen.</p>
+            <p>Podemos controlar todos los margenes de una sola vez con la propiedad margin de forma abreviada. También están las propiedades individuales de margin: margin-top, margin-right, margin-bottom, margin-left.</p>
+            <p>Los elementos en linea solo tienen disponibles los margenes horizontales (izquierda y derecha), solo se pueden mover en linea horizontal. No pueden ser verticales a menos que se le cambie el tipo de visualización con la propiedad display.</p>
+            <p>Los elementos en bloque tienen disponibles los 4 lados de margin, a estos es importante darles un ancho al menos para que no ocupen todo su espacio en la hoja de css.</p>
+            <h4>Los valores de Margin</h4>
+            <P>Son de medida para los cuatro lados.</P>
+            <h4>Buenas practicas:</h4>
+            <p><strong>Margenes automáticos para centrar elementos:</strong> con margin-left: auto; mueve la caja hacia el margen derecho (al agrandar el margen izquierdo). Con margin-right: auto; muevo todo el elemento hacia la izquierda y con las dos declaraciones centramos el elemento o la caja.</p>
+            <h4>Malas practicas:</h4>
+            <p><strong>Eliminar el margin y el padding:</strong> Con margin: 0; y padding: 0; se juntan todos los elementos y no se pueden distinguir. Peor es la situación si usan un selector universal porque van a tener que ir elemento a elemento para cambiar estas propiedades.</p>
+            <p><strong>Centrar elementos con margin 0 auto:</strong> Puede desaparecer el espacio/separación vertical si hay otros elementos antes en la cascada.</p>
+            <p><strong>Usar margin 0 y padding 0 en el body:</strong> El primero por que todos los navegadores tienen por defecto un margin 8px (a todos los lados) se puede ver en inspeccionar elemento y los hace desaparecer. El segundo no tiene sentido porque no hay padding por defecto.</p>
+            <h4>Colapso de margin</h4>
+            <p>Si hay dos elementos cuyo margen se tocan, el margen que se sobrepone es el más grande. Un problema común es cuando queremos crear espacios y no se asigna el que le decimos, lo más probable es que haya un colapso de margen.</p>
+            <h3>Border</h3>
+            <p>Es el marco para las cajas, la mayoría son invisibles por defecto.</p>
+            <img>
+            <p>En la propiedad abreviada border podemos el ancho (width), el estilo (style) y el color en una linea. Son todos los valores que se le pueden aplicar a un borde</p>
+            <p>Como segundo método abreviado tenemos: border-top para modificar de una sola vez cada lado por su cuenta.</p>
+            <p>De manera individual tenemos: por ejemplo border-top-width asi con todos los lados y los demás valores de border para aplicar estos valores independientemente de cada lado.</p>
+            <h4>Los estilos de los bordes</h4>
+            <p>Podemos cambiar cada borde individualmente con una variedad de estilos.<p>
+            <h3>Padding</h3>
+            <p>Genera espacio interno entre el borde y el contenido de la caja. No puede tener valores negativos, solo de 0 a positivo. Se usa para alejar el contenido del borde de la caja.</p>
+            <p>La propiedad abreviada padding controla los 4 lados. Admite cuatro valores (top, right, bottom y left) así escritos, como las agujas del reloj. Si ponemos 3 valores: el primer va a ser para top, el segundo para right-left y el tercero para bottom. Si ponemos 2 valores: el primero para top y bottom, el segundo para right y left. Con un solo valor controlamos todos los lados</p>
+            <p>La propiedad individual: como padding-top sirve para con mas detalle cada lado, asi con los demás.</p>
+            <h3>Cuando usar padding y margin</h3>
+            <p>Cuando tenemos que separar o mover una caja de los demás elementos usamos margin, si tenemos que aumentar el tamaño de una caja o separar el contenido del borde usamos padding.</p>
+            <h3>Model-Box y Display</h3>
         </article>
 
     </main>
