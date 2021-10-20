@@ -27,7 +27,7 @@
             <p>Se comportara de la siguiente manera:</p>
             <ul>
                 <li>No fuerza un salto de linea al llegar al final de la linea.</li>
-                <li>Las propiedades <strong>width</strong> y <strong>height</strong> no funcionan por defecto (solo cambiando su tipo de visualización).</li>
+                <li>Las propiedades <strong>width</strong> y <strong>height</strong> no funcionan por defecto (solo cambiando su tipo de visualización). Aunque con padding se puede agrandar la caja desde adentro pero se superponen los otros elementos, si hay y dependiendo de cuanto sea el padding.</li>
                 <li>Las propiedades padding, margin y border <em>verticales</em> no alejan a otras cajas en linea.</li>
                 <li>Las propiedades padding, margin y border <em>horizontales</em> si alejan a otras cajas en linea.</li>
             </ul>
@@ -101,6 +101,9 @@
             <h3>Cuando usar padding y margin</h3>
             <p>Cuando tenemos que separar o mover una caja de los demás elementos usamos margin, si tenemos que aumentar el tamaño de una caja o separar el contenido del borde usamos padding.</p>
             <h3>Model-Box y Display</h3>
+            <p>La propiedad display cambia el contexto de los elementos modificando su comportamiento. Valores: none (oculta el elemento, pero sigue estando en el html), block o inline (el elemento seleccionado tendrá el comportamiento según las características de estos valores), inline-block (elemento en linea que admite medidas y margenes verticales, o sea, se puede modificar los lados arriba y abajo). Flex y grid son experimentales.</p>
+            <p><strong>Ejemplo:</strong> Si tomamos un span que es un elemento en linea no se puede dar forma con width y height, pero si internamente con padding aunque si hay elemntos alrededor se van a superponer. Para esto se puede usar la propiedad inline-block: se aplican el ancho y el alto y el padding, margin y border mantienen alejados a otros elementos a los cuatro lados. Aunque no hace un salto de linea como la propiedad block. En la practica sirve para que elementos en linea tengan más protagonismo o ocupen más lugar en una pagina cuando lo necesitemos.</p>    
+            
         </article>
 
     </main>
